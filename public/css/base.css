@@ -1,0 +1,28 @@
+a {
+  text-decoration: none;
+  color: #333;
+}
+* {
+  padding: 0;
+  outline: none;
+  margin: 0;
+  font-style:normal
+}
+ul {
+  list-style: none;
+}
+button{
+  outline: none;
+}
+
+.emote {
+  width: 34px;
+  vertical-align: middle;
+  height: 34px;
+}
+.suggest_high_light{
+  color: #fb7299;
+}
+.keyword{
+  color: #fb7299;
+}
