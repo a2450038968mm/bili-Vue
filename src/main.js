@@ -8,8 +8,10 @@ import store from './store'
 import "./assets/font/iconfont.css"
 import 'vant/lib/index.css';
 
-Vue.use(Vant);
 Vue.config.productionTip = false
+import "amfe-flexible"
+
+Vue.use(Vant);
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   attempt: 2,

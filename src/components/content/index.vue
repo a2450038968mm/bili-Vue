@@ -115,11 +115,11 @@ export default {
       .video {
         position: relative;
         background-color: #000;
-        height: 165px;
+        // height: 165px;
         img {
           border-radius: 5px;
           width: 100%;
-          height: 100%;
+          // height: 100%;
         }
         .count {
           position: absolute;
@@ -145,7 +145,7 @@ export default {
         }
       }
       p {
-        line-height: 20px;
+        line-height: 23px;
         width: 100%;
         margin-top: 6px;
         font-size: 20px;

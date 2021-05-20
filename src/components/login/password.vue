@@ -159,6 +159,7 @@ export default {
       obj.seccode = this.seccode;
       this.getsaltvalue((val) => {
         obj.password = val;
+        console.log(obj);
         let param = new URLSearchParams();
         for (let key in obj) {
           param.append(key, obj[key]);
@@ -192,6 +193,8 @@ export default {
       getSaltValue().then((data) => {
         let key = data.key;
         let hash = data.hash + this.password;
+        console.log(key);
+        console.log(hash);
         let val = this.$getRsaCode(key, hash);
         callback(val);
       });

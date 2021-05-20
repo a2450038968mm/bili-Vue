@@ -74,7 +74,7 @@ export function getmsgtoken(params) {
 // 短信登录
 export function phoneLogin(data) {
   return request({
-    url: "/web/login/rapid",  //http://passport.bilibili.com/web/login/rapid
+    url: "/x/passport-login/web/login/sms",  //https://passport.bilibili.com/x/passport-login/web/login/sms
     method: "post",
     // data: qs.stringify(data)
     data,

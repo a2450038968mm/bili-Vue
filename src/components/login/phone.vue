@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
     <div class="cover">
       <img v-show="!changepassword" src="../../assets/img/eye1on.png" alt="" />
       <img v-show="!changepassword" src="../../assets/img/eye2on.png" alt="" />
@@ -183,6 +183,7 @@ export default {
         if (data.code == 0) {
           this.canlogin = true;
           this.istime = false;
+          this.captcha_key = data.data.captcha_key
           this.timer = setInterval(() => {
             this.time -= 1;
             if (this.time < 1) {
@@ -209,12 +210,17 @@ export default {
       let param = new URLSearchParams();
       param.append("cid","86");
       param.append("tel",_this.uname);
-      param.append("smsCode",_this.phonemsg);
+      param.append("code",_this.phonemsg);
+      param.append("source","main_h5");
+      param.append("go_url","http://39.105.39.45:8000");
+      param.append("keep",true);
+      param.append("captcha_key",_this.captcha_key);
       phoneLogin(param).then(data=>{
         if(data.code!=0){
           Toast.fail(data.message)
         }else{
-          this.setcookie(data.data.redirectUrl)
+          this.setcookie(data.data.url)
+          this.$router.push({path:"/index"})
         }
       })
     },
@@ -247,6 +253,9 @@ export default {
 
 
 <style lang="less" scoped>
+.body{
+  font-size: 24px;
+}
 input,
 button {
   outline: none;
@@ -299,6 +308,9 @@ button {
     }
   }
   .password {
+    p{
+      font-size: 16px;
+    }
     .iconfont {
       right: 105px;
     }

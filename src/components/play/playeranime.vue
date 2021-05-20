@@ -5,7 +5,6 @@
       <video
         v-show="!isstart && canplay"
         width="100%"
-        height="100%"
         ref="video"
         src="../../assets/video.mp4"
       ></video>
@@ -237,7 +236,6 @@ import BScroll from "better-scroll";
 export default {
   data() {
     return {
-     
       // src:
       //   "https://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/94/38/330303894/330303894-1-400.mp4?e=ig8euxZM2rNcNbRM7WdVhoM17wUVhwdEto8g5X10ugNcXBMvNC8xNbLEkF6MuwLStj8fqJ0EkX1ftx7Sqr_aio8_&uipk=5&nbs=1&deadline=1620296038&gen=playurlv2&os=kodobv&oi=1947649570&trid=a7d1fa864f77488fa93f47409b493206p&platform=html5&upsig=c1138d906a1fc423b7830864b459acfc&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=38095853&orderid=0,1&logo=80000000",
       canplay: false,
@@ -349,13 +347,11 @@ export default {
         probeType: 3,
         click: true,
       });
-      this.bs.on("scrollStart", () => {
-      });
-      this.bs.on("scroll", ({ x}) => {
+      this.bs.on("scrollStart", () => {});
+      this.bs.on("scroll", ({ x }) => {
         console.log(x);
       });
-      this.bs.on("scrollEnd", () => {
-      });
+      this.bs.on("scrollEnd", () => {});
     },
     clectspeed(speed) {
       this.$refs.video.playbackRate = speed;
@@ -462,8 +458,7 @@ export default {
     this.getplayeranmit();
   },
   created() {
-    this.$nextTick(() => {
-    });
+    this.$nextTick(() => {});
   },
   watch: {
     num() {
@@ -473,10 +468,38 @@ export default {
       });
     },
     $route() {
+      this.cardlist = {
+        Card: {
+          card: {
+            face: "",
+            name: "",
+          },
+        },
+        View: {
+          title: "",
+          stat: {
+            view: "",
+            like: "",
+          },
+        },
+      };
+      this.anmtedata={
+        cover:""
+      }
+      this.imgsrc=""
+      console.log(this.$route.query.season_id);
+      this.season_id = this.$route.query.season_id;
+      this.isstart = true;
+      this.isattention = false;
+      this.canplay = false;
+      this.isplay = false;
+      this.isdeal = false;
+      this.isbil = false;
+      this.islike = false;
+      window.scrollTo(0, 0);
       this.getplayeranmit();
     },
-    $rsef() {
-    },
+    $rsef() {},
   },
   filters: {
     timeformat(val) {
@@ -491,6 +514,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.body {
+  font-size: 24px;
+}
 .horizontal-container {
   .scroll-wrapper {
     position: relative;
@@ -657,6 +683,10 @@ export default {
           height: 42px;
           font-size: 28px;
           margin-bottom: 8px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
         }
         .infoseason {
           display: flex;
@@ -816,7 +846,7 @@ export default {
           width: 47px;
           position: absolute;
           text-align: center;
-
+          font-size: 16px;
           right: 0;
           top: 0;
           color: #fff;

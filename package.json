@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@better-scroll/core": "^2.2.1",
+    "amfe-flexible": "^2.2.1",
     "axios": "^0.21.1",
     "better-scroll": "^2.2.1",
     "core-js": "^3.6.5",
@@ -34,6 +35,7 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "lint-staged": "^9.5.0",
+    "px2rem-loader": "^0.1.9",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

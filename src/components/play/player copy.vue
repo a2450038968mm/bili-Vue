@@ -2,13 +2,7 @@
   <div>
     <div>
       <div class="video" ref="videos" @click.self="showprow">
-        <img
-          class="img"
-          v-show="isstart"
-          @click="control"
-          v-lazy="cardlist.View.pic"
-          alt=""
-        />
+        <img class="img" v-show="isstart" v-lazy="cardlist.View.pic" alt="" />
         <video
           v-show="!isstart && canplay"
           width="100%"
@@ -264,33 +258,33 @@ export default {
   },
   data() {
     return {
+      isbil: false,
       csrf: "",
-      canplay: false, //是否加载完毕
+      canplay: false,
       playurl: "",
       showP: false,
       p: 0,
       avid: null,
       bvid: null,
       oid: null,
-      isdeal: false,  //是否收藏
-      isbil: false,  //是否投币
-      islike: false,  //是否点赞
+      isdeal: false,
+      islike: false,
       commentnum: null,
       detail: {},
-      isfullscreen: false, //是否全屏
-      isattention: false,   //是否关注
-      loadend: false,  
-      isplay: false, //是否暂停
+      isfullscreen: false,
+      isattention: false,
+      loadend: false,
+      isplay: false,
       activeNames: ["0"],
       describe: false,
-      isrecommend: true,   //显示推荐
-      isstart: true,     //显示控件
+      isrecommend: true,
+      isstart: true,
       ingtime: 0,
       endtime: 100,
       timer: null,
       isdrage: false,
       timerleve: null,
-      showtips: false,   
+      showtips: false,
       speed: 1,
       showspeed: false,
       cardlist: {
@@ -309,13 +303,13 @@ export default {
         },
       },
       recommendlist: [],
-      length: 0,
+      length:0,
     };
   },
   methods: {
-    gouser() {
-      let mid = this.cardlist.Card.card.mid;
-      this.$router.push({ path: "/user", query: { mid } });
+    gouser(){
+      let mid = this.cardlist.Card.card.mid
+      this.$router.push({path:"/user",query:{mid}})
     },
     onP(index) {
       this.p = index;
@@ -359,7 +353,7 @@ export default {
         obj.bvid = this.bvid;
       }
       obj.cid = this.cardlist.View.pages[this.p].cid;
-      this.length = this.cardlist.View.pages.length;
+      this.length = this.cardlist.View.pages.length
       obj.fnval = 1;
       obj.platform = "html5";
       obj.otype = "json";
@@ -368,7 +362,7 @@ export default {
       getVideoUrl(obj).then((data) => {
         this.playurl = data.data.durl[0].url;
         this.$refs.video.addEventListener("canplay", () => {
-          this.$refs.video.controls = false;
+           this.$refs.video.controls=false;
           this.canplay = true;
           console.log("加载完毕");
           // this.engtime = this.endtime = this.$refs.audio.duration;
@@ -391,7 +385,7 @@ export default {
         }
         this.cardlist = data.data;
         console.log(this.cardlist);
-
+        
         this.recommendlist = data.data.Related;
         this.detail = data.data.View;
         this.cardlist.View.desc = this.desc(this.cardlist.View.desc);
@@ -426,11 +420,9 @@ export default {
       }
     },
     control() {
-      if (this.canplay) {
-        this.isstart = false;
-        this.showtips = true;
-        this.togger();
-      }
+      this.isstart = false;
+      this.showtips = true;
+      this.togger();
     },
     magnify() {
       let videos = this.$refs.videos;
@@ -538,29 +530,6 @@ export default {
       this.getvideourl();
     },
     $route() {
-      window.scrollTo(0,0)
-      this. cardlist= {
-        Card: {
-          card: {
-            face: "",
-            name: "",
-          },
-        },
-        View: {
-          title: "",
-          stat: {
-            view: "",
-            like: "",
-          },
-        },
-      }
-      this.isstart=true
-      this.isattention=false
-      this.canplay=false
-      this.isplay=false
-      this.isdeal= false,
-      this.isbil= false,
-      this.islike=false,
       this.oid = this.$route.query.oid;
       this.avid = this.$route.query.avid;
       this.bvid = this.$route.query.bvid;
@@ -572,9 +541,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.body{
-  font-size: 24px;
-}
 .play-enter,
 .play-leave-to {
   // opacity: 0;
@@ -807,7 +773,6 @@ export default {
 }
 .video {
   margin-top: -56px;
-  max-height: 400px;
   position: relative;
   overflow: hidden;
   .img {

@@ -121,7 +121,7 @@ export default {
           arr[i] += "]";
           if (arr[i] in this.replyList.replies[index].content.emote) {
             text +=
-              "<img  referrer='no-referrer|origin|unsafe-url' class='emote' src=" +
+              "<img  referrer='no-referrer|origin|unsafe-url' style='width:2.2em;height:2.2em;vertical-align: middle;'  class='emote' src=" +
               this.replyList.replies[index].content.emote[arr[i]].url +
               ">";
           }
@@ -148,7 +148,7 @@ export default {
             arr[i] in this.replyList.replies[index].replies[key].content.emote
           ) {
             text +=
-              "<img class='emote' src=" +
+              "<img style='width:2.2em;height:2.2em;vertical-align: middle;' class='emote' src=" +
               this.replyList.replies[index].replies[key].content.emote[arr[i]]
                 .url +
               ">";
@@ -177,11 +177,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
 .icon-zan {
   &.con {
     color: #fb6791;
   }
 }
+
 .show {
   color: #5a90cd;
   font-size: 22px;
@@ -265,5 +267,10 @@ export default {
       }
     }
   }
+}
+.emote {
+  width: 34px;
+  vertical-align: middle;
+  height: 34px;
 }
 </style>

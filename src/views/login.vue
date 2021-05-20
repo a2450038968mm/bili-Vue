@@ -1,18 +1,18 @@
 <template>
   <div class="body">
-    <!-- <div class="header" v-show=ispassword> -->
     <div class="header" v-show="ispassword">
+      <span @click="goindex" class="iconfont icon-bilibili"></span>
       密码登录
       <span @click="toggerlogintype">短信登录</span>
     </div>
     <div class="header" v-show="!ispassword">
+      <span @click="goindex" class="iconfont icon-bilibili"></span>
       短信登录
       <span @click="toggerlogintype">密码登录</span>
     </div>
 
-    <passwordcom  v-if="ispassword"></passwordcom>
-    <phone  v-else></phone>
-    
+    <passwordcom v-if="ispassword"></passwordcom>
+    <phone v-else></phone>
   </div>
 </template>
 
@@ -22,21 +22,21 @@ import phone from "../components/login/phone";
 export default {
   components: {
     passwordcom,
-    phone
+    phone,
   },
   data() {
     return {
       ispassword: true,
     };
   },
-  methods:{
-    aaa(){
-      console.log(11111);
+  methods: {
+    goindex() {
+      this.$router.push({ path: "/" });
     },
-    toggerlogintype(){
-      this.ispassword=!this.ispassword
-    }
-  }
+    toggerlogintype() {
+      this.ispassword = !this.ispassword;
+    },
+  },
 };
 </script>
 
@@ -50,7 +50,9 @@ button {
   height: 100vh;
   background: #f4f4f4;
   width: 100vw;
+  font-size: 24px;
 }
+
 .header {
   background: #fff;
   text-align: center;
@@ -63,6 +65,16 @@ button {
     position: absolute;
     right: 15px;
     bottom: 25px;
+  }
+  .iconfont {
+    // display: inline;
+    text-align: left;
+    position: absolute;
+    height: 70px;
+    font-size: 48px;
+    top: 10px;
+    left: 10px;
+    color: #fb7299;
   }
 }
 </style>

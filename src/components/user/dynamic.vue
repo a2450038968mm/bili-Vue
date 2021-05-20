@@ -8,15 +8,12 @@
           </div>
           <div class="username">
             <h1>{{ item.desc.user_profile.info.uname }}</h1>
-            <h2 v-if="item.card.ctime">
-              {{ item.card.ctime }}1 {{ item.card.ctime | timefor }}·投稿了视频
+            <h2 v-if="item.card.ctime">{{ item.card.ctime | timefor }}·投稿了视频
             </h2>
             <h2 v-else-if="item.card.origin">
-              {{ item.card.origin.ctime }}2
               {{ item.card.origin.ctime | timefor }}·投稿了视频
             </h2>
             <h2 v-else>
-              {{ item.card.item.upload_tim }}3
               {{ item.card.item.upload_time | timefor }}·投稿了视频
             </h2>
           </div>
@@ -41,6 +38,7 @@
                 v-for="(val, key) in item.card.item.content"
                 :key="key"
                 v-html="val"
+                v-show="val.length"
               ></p>
               <div class="cover" v-if="item.card.item.pictures">
                 <img

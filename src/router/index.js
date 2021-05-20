@@ -201,7 +201,7 @@ router.beforeEach((to, from, next) => {
   }
   console.log(cookieValue);
   if(!cookieValue){
-    console.log(123);
+    // console.log(123);
     if(to.path=="/player"||to.path=='/playeranime'){
       next("/login")
       return

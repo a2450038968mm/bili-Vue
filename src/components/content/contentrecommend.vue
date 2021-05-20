@@ -160,11 +160,11 @@ export default {
         box-sizing: border-box;
         .video {
           position: relative;
-          height: 165px;
+          // height: 165px;
           img {
             border-radius: 5px;
             width: 100%;
-            height: 100%;
+            // height: 100%;
           }
           .count {
             position: absolute;

@@ -24,8 +24,8 @@
             <img :src="userimg" alt="" />
           </div>
           <!-- 下载 -->
-          <div class="download" @click="islogin = true" v-if="!islogin"></div>
-          <div class="download red" @click="islogin = false" v-else>
+          <div class="download"  v-if="!islogin"></div>
+          <div class="download red" @click="exitlogin" v-if="islogin">
             退出登录
           </div>
         </div>
@@ -121,6 +121,17 @@ export default {
         }
       }
     },
+    exitlogin() {
+      var myDate = new Date();
+      myDate.setTime(-1000); //设置时间
+      var data = document.cookie;
+      var dataArray = data.split("; ");
+      for (var i = 0; i < dataArray.length; i++) {
+        var varName = dataArray[i].split("=");
+        document.cookie = varName[0] + "=''; expires=" + myDate.toGMTString();
+      }
+      this.$router.push({path:"/login"})
+    },
     getCookie(cookieName) {
       var cookieStr = unescape(document.cookie);
       var arr = cookieStr.split("; ");
@@ -162,7 +173,7 @@ export default {
         return (obj = item.split("="));
       });
       obj.forEach((item) => {
-        document.cookie = item[0] + "=" + item[1]+"; Max-Age=86400";
+        document.cookie = item[0] + "=" + item[1] + "; Max-Age=86400";
       });
     },
   },
@@ -176,7 +187,7 @@ export default {
       this.getuserimg();
     },
     islogin() {
-      this.setcookie(document.cookie)
+      this.setcookie(document.cookie);
     },
   },
 };
@@ -184,6 +195,9 @@ export default {
 
 
 <style lang="less" scoped>
+.body{
+  font-size: 24px;
+}
 .top {
   z-index: 100;
   background-color: #fff;
@@ -248,6 +262,7 @@ export default {
         height: 43px;
         text-align: center;
         border-radius: 10px;
+        font-size: 20px;
       }
       .red {
         background-color: #fb7299;
